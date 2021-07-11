@@ -17,4 +17,8 @@ fn main() {
         .file("schema/api-session.capnp")
         .run()
         .expect("compiling");
+    let path = std::env::current_dir().unwrap();
+    println!("The current directory is {}", path.display());
+    println!("cargo:rerun-if-changed=schema");
+    println!("cargo:CAPNP_INCLUDE={}/schema", path.display());
 }
